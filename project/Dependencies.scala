@@ -2,12 +2,13 @@ import sbt._
 
 object Dependencies {
 
-  val awsSdkVersion = "1.11.29"
+  val awsSdkVersion = "1.11.52"
 
   val awsJavaSdkLambda      = "com.amazonaws" % "aws-java-sdk-lambda"       % awsSdkVersion
   val awsJavaSdkApiGateway  = "com.amazonaws" % "aws-java-sdk-api-gateway"  % awsSdkVersion
   val awsJavaSdkS3          = "com.amazonaws" % "aws-java-sdk-s3"           % awsSdkVersion
   val awsJavaSdkKinesis     = "com.amazonaws" % "aws-java-sdk-kinesis"      % awsSdkVersion
+  val awsJavaSdkEvents      = "com.amazonaws" % "aws-java-sdk-events"       % awsSdkVersion
 
   val scalaTest = "org.scalatest" %% "scalatest" % "2.2.4"
 
@@ -22,6 +23,7 @@ object Dependencies {
     awsJavaSdkApiGateway,
     awsJavaSdkS3,
     awsJavaSdkKinesis,
+    awsJavaSdkEvents,
     config % Test,
     scalaTest % Test
   )

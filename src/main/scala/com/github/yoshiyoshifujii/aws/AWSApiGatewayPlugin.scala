@@ -32,8 +32,10 @@ object AWSApiGatewayPlugin extends AutoPlugin {
 
     lazy val getAuthorizers = taskKey[Unit]("")
 
-    lazy val awsRegion = settingKey[String]("")
-    lazy val awsAccountId = settingKey[String]("")
+    object aws {
+      lazy val awsRegion = settingKey[String]("")
+      lazy val awsAccountId = settingKey[String]("")
+    }
 
     lazy val awsApiGatewayRestApiId = settingKey[String]("")
     lazy val awsApiGatewayYAMLFile = settingKey[File]("")
@@ -42,6 +44,7 @@ object AWSApiGatewayPlugin extends AutoPlugin {
   }
 
   import autoImport._
+  import autoImport.aws._
 
   override lazy val projectSettings = Seq(
     getRestApis := {

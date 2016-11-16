@@ -21,33 +21,40 @@ object AWSServerlessPlugin extends AutoPlugin {
     lazy val unDeploy = taskKey[Unit]("")
     lazy val testMethod = inputKey[Unit]("")
 
-    lazy val awsLambdaFunctionName = settingKey[String]("")
-    lazy val awsLambdaDescription = settingKey[String]("")
-    lazy val awsLambdaHandler = settingKey[String]("")
-    lazy val awsLambdaRole = settingKey[String]("")
-    lazy val awsLambdaTimeout = settingKey[Int]("")
-    lazy val awsLambdaMemorySize = settingKey[Int]("")
-    lazy val awsLambdaS3Bucket = settingKey[String]("")
-    lazy val awsLambdaDeployDescription = settingKey[String]("")
-    lazy val awsLambdaAliasNames = settingKey[Seq[String]]("")
+    object awsLambda {
+      lazy val awsLambdaFunctionName = settingKey[String]("")
+      lazy val awsLambdaDescription = settingKey[String]("")
+      lazy val awsLambdaHandler = settingKey[String]("")
+      lazy val awsLambdaRole = settingKey[String]("")
+      lazy val awsLambdaTimeout = settingKey[Int]("")
+      lazy val awsLambdaMemorySize = settingKey[Int]("")
+      lazy val awsLambdaS3Bucket = settingKey[String]("")
+      lazy val awsLambdaDeployDescription = settingKey[String]("")
+      lazy val awsLambdaAliasNames = settingKey[Seq[String]]("")
+    }
 
-    lazy val awsApiGatewayResourcePath = settingKey[String]("")
-    lazy val awsApiGatewayResourceHttpMethod = settingKey[String]("")
-    lazy val awsApiGatewayResourceUriLambdaAlias = settingKey[String]("")
-    lazy val awsApiGatewayIntegrationRequestTemplates = settingKey[Seq[(String, String)]]("")
-    lazy val awsApiGatewayIntegrationResponseTemplates = settingKey[ResponseTemplates]("")
+    object awsApiGateway {
+      lazy val awsApiGatewayResourcePath = settingKey[String]("")
+      lazy val awsApiGatewayResourceHttpMethod = settingKey[String]("")
+      lazy val awsApiGatewayResourceUriLambdaAlias = settingKey[String]("")
+      lazy val awsApiGatewayIntegrationRequestTemplates = settingKey[Seq[(String, String)]]("")
+      lazy val awsApiGatewayIntegrationResponseTemplates = settingKey[ResponseTemplates]("")
 
-    lazy val awsMethodAuthorizerName = settingKey[String]("")
+      lazy val awsMethodAuthorizerName = settingKey[String]("")
 
-    lazy val awsTestHeaders = settingKey[Seq[(String, String)]]("")
-    lazy val awsTestParameters = settingKey[Seq[(String, String)]]("")
-    lazy val awsTestPathWithQuerys = settingKey[Seq[(String, String)]]("")
-    lazy val awsTestBody = settingKey[String]("")
-    lazy val awsTestSuccessStatusCode = settingKey[Int]("")
+      lazy val awsTestHeaders = settingKey[Seq[(String, String)]]("")
+      lazy val awsTestParameters = settingKey[Seq[(String, String)]]("")
+      lazy val awsTestPathWithQuerys = settingKey[Seq[(String, String)]]("")
+      lazy val awsTestBody = settingKey[String]("")
+      lazy val awsTestSuccessStatusCode = settingKey[Int]("")
+    }
   }
 
   import autoImport._
+  import autoImport.awsLambda._
+  import autoImport.awsApiGateway._
   import AWSApiGatewayPlugin.autoImport._
+  import AWSApiGatewayPlugin.autoImport.aws._
 
   override def requires = sbtassembly.AssemblyPlugin
 

@@ -20,7 +20,9 @@ object AWSCustomAuthorizerPlugin extends AutoPlugin {
 
   import autoImport._
   import AWSServerlessPlugin.autoImport._
+  import AWSServerlessPlugin.autoImport.awsLambda._
   import AWSApiGatewayPlugin.autoImport._
+  import AWSApiGatewayPlugin.autoImport.aws._
 
   override lazy val projectSettings = Seq(
     getAuthorizers := {
