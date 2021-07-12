@@ -47,7 +47,7 @@ trait AWSLambdaWrapper extends AWSWrapper {
       cf <- Try {
         val request = new CreateFunctionRequest()
           .withFunctionName(functionName)
-          .withRuntime(com.amazonaws.services.lambda.model.Runtime.Java8)
+          .withRuntime(com.amazonaws.services.lambda.model.Runtime.Java8Al2)
           .withRole(role)
           .withHandler(handler)
           .withCode(code)
@@ -93,7 +93,7 @@ trait AWSLambdaWrapper extends AWSWrapper {
                    tracingMode: Option[TracingMode]) = Try {
     val request = new UpdateFunctionConfigurationRequest()
       .withFunctionName(functionName)
-      .withRuntime(com.amazonaws.services.lambda.model.Runtime.Java8)
+      .withRuntime(com.amazonaws.services.lambda.model.Runtime.Java8Al2)
       .withHandler(handler)
       .withRole(role)
     description.foreach(request.setDescription)
